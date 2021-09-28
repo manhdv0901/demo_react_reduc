@@ -1,14 +1,16 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 import ControllerScreen from "./ControllerScreen";
+
 import { connect} from "react-redux";
 
 function ExampleScreen(props){
+    const color = props.myHigtlight ? 'yellow' : 'white';
     return(
         <View style={styleApp.container}>
             <View style={styleApp.header}>
                 <Text style={styleApp.appName}>EXAM 1: {'\n'}APP COMPONENT</Text>
-                <Text style={styleApp.value}>{props.myValue}</Text>
+                <Text style={{fontSize: 40, color}}>{props.myValue}</Text>
             </View>
             <ControllerScreen/>
         </View>
@@ -17,7 +19,9 @@ function ExampleScreen(props){
 
 // share state component want to use
 function mapSateToProps(state){
-    return { myValue: state.value};
+    return { myValue: state.value,
+             myHigtlight: state.hightlight,
+    };
 }
 
 //function return function

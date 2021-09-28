@@ -6,15 +6,17 @@ import { createStore} from 'redux';
 import { Provider } from 'react-redux';
 
 //create start
-const defaultState = {value: 0};
+const defaultState = {value: 0, hightlight: false};
 
 //create reduce
 const reducer = (state = defaultState, action) => {
   switch (action.type){
     case 'UP':
-      return {value: state.value +1};
+      return {value: state.value +1, hightlight: state.hightlight};
     case 'DOWN':
-      return  {value:state.value -1};
+      return  {value:state.value -1, hightlight: state.hightlight};
+    case 'CHANGE_COLOR':
+      return {value: state.value, hightlight: !state.hightlight};
     default:
       return state;
   }

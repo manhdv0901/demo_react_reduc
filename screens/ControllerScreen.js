@@ -1,31 +1,36 @@
 import React from "react";
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {connect} from "react-redux";
+import ChangeColor from "./ChangeColor";
 
-function ControllerScreen (){
+
+
+function ControllerScreen (props){
 
     return(
 
             <View style={styleController.controller}>
                 <Text style={styleController.controllName}>CONTROLLER COMPONENT</Text>
+                 <ChangeColor />
                 <View style={styleController.buttonContainer}>
                     <TouchableOpacity
                         style={styleController.button}
                         onPress={() => {
-                            // value.dispatch({type: 'UP'});
-                            // props.dispatch({type: 'UP'});
+                            props.dispatch({type: 'UP'});
                         }}>
                         <Text style={styleController.buttonText}>+</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styleController.button}>
+                    <TouchableOpacity
+                        style={styleController.button}
+                        onPress={() => {
+                            props.dispatch({type:'DOWN'});
+                        }}>
                         <Text style={styleController.buttonText}>-</Text>
                     </TouchableOpacity>
                 </View>
             </View>
     );
 }
-
-
 
 export default connect()(ControllerScreen);
 
